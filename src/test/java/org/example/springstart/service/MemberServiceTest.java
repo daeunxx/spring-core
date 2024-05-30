@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.assertj.core.api.Assertions;
 import org.example.springstart.domain.Member;
 import org.example.springstart.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +16,13 @@ class MemberServiceTest {
   MemoryMemberRepository memberRepository;
 
   @BeforeEach
-  public void afterEach() {
+  public void beforeEach() {
     memberRepository = new MemoryMemberRepository();
     memberService = new MemberService(memberRepository);
+  }
+
+  @AfterEach
+  public void afterEach() {
     memberRepository.clearStore();
   }
 
