@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import org.example.springstart.domain.Member;
 import org.example.springstart.repository.MemberRepository;
-import org.example.springstart.repository.MemoryMemberRepository;
-import org.springframework.stereotype.Service;
 
-@Service
 public class MemberService {
 
-  private final static MemberRepository memberRepository = new MemoryMemberRepository();
+  private final MemberRepository memberRepository;
+
+  public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
+  }
 
   /**
    * 회원 가입
@@ -29,11 +30,11 @@ public class MemberService {
     return memberRepository.findAll();
   }
 
-  public Optional findMember(Long memberId) {
+  public Optional<Member> findMember(Long memberId) {
     return memberRepository.findById(memberId);
   }
 
-  private static void validateDuplicateMember(Member member) {
+  private void validateDuplicateMember(Member member) {
     memberRepository.findByName(member.getName())
             .ifPresent(m -> {
               throw new IllegalStateException("이미 존재하는 회원입니다.");
