@@ -2,6 +2,8 @@ package org.example.hellospring;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import org.example.hellospring.payment.Payment;
+import org.example.hellospring.payment.PaymentService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

@@ -1,5 +1,9 @@
 package org.example.hellospring;
 
+import org.example.hellospring.exrate.CachedExRateProvider;
+import org.example.hellospring.payment.ExRateProvider;
+import org.example.hellospring.exrate.WebApiExRateProvider;
+import org.example.hellospring.payment.PaymentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

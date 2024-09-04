@@ -1,4 +1,4 @@
-package org.example.hellospring;
+package org.example.hellospring.exrate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.math.BigDecimal;
