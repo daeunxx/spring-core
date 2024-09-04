@@ -11,25 +11,16 @@ public class ObjectFactory {
   //싱글톤으로 만들어짐
   @Bean
   public PaymentService paymentService() {
-    return new PaymentService(exRateProvider());
+    return new PaymentService(cachedExRateProvider());
   }
 
   @Bean
-  public OrderService orderService() {
-    return new OrderService(exRateProvider());
+  public ExRateProvider cachedExRateProvider() {
+    return new CachedExRateProvider(exRateProvider());
   }
 
   @Bean
   public ExRateProvider exRateProvider() {
     return new WebApiExRateProvider();
-  }
-}
-
-class OrderService {
-
-  ExRateProvider exRateProvider;
-
-  public OrderService(ExRateProvider exRateProvider) {
-    this.exRateProvider = exRateProvider;
   }
 }

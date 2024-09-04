@@ -1,30 +1,26 @@
 package org.example.hellospring;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Client {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, InterruptedException {
     BeanFactory beanFactory = new AnnotationConfigApplicationContext(ObjectFactory.class);
-    PaymentService paymentService1 = beanFactory.getBean(PaymentService.class);
-    PaymentService paymentService2 = beanFactory.getBean(PaymentService.class);
-    OrderService orderService = beanFactory.getBean(OrderService.class);
+    PaymentService paymentService = beanFactory.getBean(PaymentService.class);
 
-    System.out.println("paymentService1 = " + paymentService1);
-    System.out.println("paymentService2 = " + paymentService2);
-    System.out.println("(paymentService1 == paymentService2): " + 
-        (paymentService1 == paymentService2));
+    Payment payment1 = paymentService.prepare(100L, "USD", java.math.BigDecimal.valueOf(50.7));
+    System.out.println("payment1 = " + payment1);
+    System.out.println("--------------------------------\n");
 
-    ObjectFactory objectFactory = beanFactory.getBean(ObjectFactory.class);
-    PaymentService objPaymentService1 = objectFactory.paymentService();
-    PaymentService objPaymentService2 = objectFactory.paymentService();
-    System.out.println("(objPaymentService1 == objPaymentService2): " + 
-        (objPaymentService1 == objPaymentService2));
+    Payment payment2 = paymentService.prepare(100L, "USD", java.math.BigDecimal.valueOf(50.7));
+    System.out.println("payment2 = " + payment2);
+    System.out.println("--------------------------------\n");
 
-
-    Payment payment = paymentService1.prepare(100L, "USD", java.math.BigDecimal.valueOf(50.7));
-    System.out.println("payment = " + payment);
+    TimeUnit.SECONDS.sleep(3);
+    Payment payment3 = paymentService.prepare(100L, "USD", java.math.BigDecimal.valueOf(50.7));
+    System.out.println("payment3 = " + payment3);
   }
 }
