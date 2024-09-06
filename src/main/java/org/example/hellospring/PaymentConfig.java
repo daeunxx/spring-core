@@ -1,5 +1,6 @@
 package org.example.hellospring;
 
+import java.time.Clock;
 import org.example.hellospring.exrate.CachedExRateProvider;
 import org.example.hellospring.payment.ExRateProvider;
 import org.example.hellospring.exrate.WebApiExRateProvider;
@@ -10,12 +11,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan
-public class ObjectFactory {
+public class PaymentConfig {
 
   //싱글톤으로 만들어짐
   @Bean
   public PaymentService paymentService() {
-    return new PaymentService(cachedExRateProvider());
+    return new PaymentService(cachedExRateProvider(), clock());
   }
 
   @Bean
@@ -26,5 +27,10 @@ public class ObjectFactory {
   @Bean
   public ExRateProvider exRateProvider() {
     return new WebApiExRateProvider();
+  }
+
+  @Bean
+  public Clock clock() {
+    return Clock.systemDefaultZone();
   }
 }
