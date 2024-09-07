@@ -28,7 +28,7 @@ class PaymentServiceTest {
 
   @Test
   @DisplayName("환율 정보, 원화 환산 금액 검증")
-  void convertedAmount() throws IOException {
+  void convertedAmount() {
     testAmount(valueOf(500), valueOf(5_000), this.clock);
     testAmount(valueOf(1_000), valueOf(10_000), this.clock);
     testAmount(valueOf(3_000), valueOf(30_000), this.clock);
@@ -36,7 +36,7 @@ class PaymentServiceTest {
 
   @Test
   @DisplayName("원화 환산 금액 유효 시간 검증")
-  void validUtil() throws IOException {
+  void validUtil() {
     PaymentService paymentService = new PaymentService(new ExRateProviderStub(valueOf(1_000)), clock);
     Payment payment = paymentService.prepare(1L, "USD", TEN);
 
@@ -46,7 +46,7 @@ class PaymentServiceTest {
     assertThat(payment.getValidUtil()).isEqualTo(expectedValidUntil);
   }
 
-  private static void testAmount(BigDecimal exRate, BigDecimal convertedAmount, Clock clock) throws IOException {
+  private static void testAmount(BigDecimal exRate, BigDecimal convertedAmount, Clock clock) {
     PaymentService paymentService = new PaymentService(new ExRateProviderStub(exRate), clock);
     Payment payment = paymentService.prepare(1L, "USD", TEN);
 

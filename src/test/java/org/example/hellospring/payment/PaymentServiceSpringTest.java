@@ -4,7 +4,6 @@ import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.valueOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import org.assertj.core.api.Assertions;
@@ -31,7 +30,7 @@ class PaymentServiceSpringTest {
 
   @Test
   @DisplayName("환율 정보, 원화 환산 금액 검증")
-  void convertedAmount() throws IOException {
+  void convertedAmount() {
     // exRate: 1000
     Payment payment = paymentService.prepare(1L, "USD", TEN);
     assertThat(payment.getExRate()).isEqualByComparingTo(valueOf(1_000));
@@ -46,7 +45,7 @@ class PaymentServiceSpringTest {
 
   @Test
   @DisplayName("원화 환산 금액 유효 시간 검증")
-  void validUtil() throws IOException {
+  void validUtil() {
     Payment payment = paymentService.prepare(1L, "USD", TEN);
 
     LocalDateTime now = LocalDateTime.now(this.clock);
