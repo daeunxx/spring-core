@@ -7,9 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -41,7 +43,7 @@ class PaymentServiceTest {
     LocalDateTime now = LocalDateTime.now(this.clock);
     LocalDateTime expectedValidUntil = now.plusMinutes(30);
 
-    Assertions.assertThat(payment.getValidUtil()).isEqualTo(expectedValidUntil);
+    assertThat(payment.getValidUtil()).isEqualTo(expectedValidUntil);
   }
 
   private static void testAmount(BigDecimal exRate, BigDecimal convertedAmount, Clock clock) throws IOException {
@@ -50,5 +52,14 @@ class PaymentServiceTest {
 
     assertThat(payment.getExRate()).isEqualByComparingTo(exRate);
     assertThat(payment.getConvertedAmount()).isEqualByComparingTo(convertedAmount);
+  }
+
+  @Test
+  public void isValid() {
+    Clock clock = Clock.fixed(Instant.now(), ZoneId.systemDefault());
+
+    Payment payment = Payment.createPrepared(1L, "USD", TEN, valueOf(1_000), LocalDateTime.now(clock));
+    assertThat(payment.isValid(clock));
+    Assertions.assertThat(payment.isValid(Clock.offset(clock, Duration.of(30, ChronoUnit.MINUTES)))).isFalse();
   }
 }
