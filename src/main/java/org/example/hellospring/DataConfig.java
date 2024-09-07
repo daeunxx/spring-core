@@ -1,6 +1,8 @@
 package org.example.hellospring;
 
+import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import org.example.hellospring.data.OrderRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -28,5 +30,10 @@ public class DataConfig {
       setShowSql(true);
     }});
     return emf;
+  }
+
+  @Bean
+  public OrderRepository orderRepository(EntityManagerFactory emf) {
+    return new OrderRepository(emf);
   }
 }
