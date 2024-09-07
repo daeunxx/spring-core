@@ -2,7 +2,6 @@ package org.example.hellospring;
 
 import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import org.example.hellospring.data.OrderRepository;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,10 +42,5 @@ public class DataConfig {
   @Bean
   public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
     return new JpaTransactionManager(emf);
-  }
-
-  @Bean
-  public OrderRepository orderRepository() {
-    return new OrderRepository();
   }
 }
