@@ -1,23 +1,11 @@
 package org.example.hellospring.order;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "orders")
 public class Order {
 
-  @Id
-  @GeneratedValue
   private Long OrderId;
-
-  @Column(unique = true)
   private String OrderNo;
-
   private BigDecimal totalAmount;
 
   public Order() {
