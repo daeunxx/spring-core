@@ -1,6 +1,7 @@
 package org.example.hellospring;
 
-import org.example.hellospring.data.OrderRepository;
+import org.example.hellospring.data.JpaOrderRepository;
+import org.example.hellospring.order.OrderRepository;
 import org.example.hellospring.order.OrderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,6 @@ public class OrderConfig {
 
   @Bean
   public OrderRepository orderRepository() {
-    return new OrderRepository();
+    return new JpaOrderRepository();
   }
 }
