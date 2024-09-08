@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
-public class OrderServiceTxProxy implements OrderService{
+public class OrderServiceTxProxy implements OrderService {
 
   private final OrderService target;
   private final PlatformTransactionManager transactionManager;

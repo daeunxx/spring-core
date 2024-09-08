@@ -1,9 +1,8 @@
 package org.example.hellospring.payment;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
-public class ExRateProviderStub implements ExRateProvider{
+public class ExRateProviderStub implements ExRateProvider {
 
   private BigDecimal exRate;
 

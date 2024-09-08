@@ -40,6 +40,7 @@ public class DataConfig {
     return new JpaTransactionManager(emf);
   }
 */
+
   @Bean
   public PlatformTransactionManager jdbcTransactionManager() {
     return new DataSourceTransactionManager(dataSource());

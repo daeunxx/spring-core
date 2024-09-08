@@ -23,10 +23,12 @@ public class Payment {
     this.validUtil = validUtil;
   }
 
-  public static Payment createPrepared(Long orderId, String currency, BigDecimal foreignCurrencyAmount, BigDecimal exRate, LocalDateTime now) {
+  public static Payment createPrepared(Long orderId, String currency,
+      BigDecimal foreignCurrencyAmount, BigDecimal exRate, LocalDateTime now) {
     BigDecimal convertedAmount = foreignCurrencyAmount.multiply(exRate);
     LocalDateTime validUntil = now.plusMinutes(30);
-    return new Payment(orderId, currency, foreignCurrencyAmount, exRate, convertedAmount, validUntil);
+    return new Payment(orderId, currency, foreignCurrencyAmount, exRate, convertedAmount,
+        validUntil);
   }
 
   public boolean isValid(Clock clock) {

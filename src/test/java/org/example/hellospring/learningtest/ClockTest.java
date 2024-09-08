@@ -31,6 +31,6 @@ public class ClockTest {
     LocalDateTime ldt3 = LocalDateTime.now(clock).plusHours(1);
 
     assertThat(ldt2).isEqualTo(ldt1);
-    Assertions.assertThat(ldt3).isEqualTo(ldt1.plusHours(1));
+    assertThat(ldt3).isEqualTo(ldt1.plusHours(1));
   }
 }

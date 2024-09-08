@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import org.example.hellospring.exrate.ExRateData;
 
-public class ErApiExRateExtractor implements ExRateExtractor{
+public class ErApiExRateExtractor implements ExRateExtractor {
 
   @Override
   public BigDecimal extract(String response) throws JsonProcessingException {

@@ -12,7 +12,7 @@ public class Order {
   }
 
   public Order(String orderNo, BigDecimal totalAmount) {
-    OrderNo = orderNo;
+    this.OrderNo = orderNo;
     this.totalAmount = totalAmount;
   }
 

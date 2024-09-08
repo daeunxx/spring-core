@@ -4,7 +4,6 @@ import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.valueOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Duration;
@@ -12,7 +11,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,7 +35,8 @@ class PaymentServiceTest {
   @Test
   @DisplayName("원화 환산 금액 유효 시간 검증")
   void validUtil() {
-    PaymentService paymentService = new PaymentService(new ExRateProviderStub(valueOf(1_000)), clock);
+    PaymentService paymentService = new PaymentService(new ExRateProviderStub(valueOf(1_000)),
+        clock);
     Payment payment = paymentService.prepare(1L, "USD", TEN);
 
     LocalDateTime now = LocalDateTime.now(this.clock);
@@ -58,8 +57,10 @@ class PaymentServiceTest {
   public void isValid() {
     Clock clock = Clock.fixed(Instant.now(), ZoneId.systemDefault());
 
-    Payment payment = Payment.createPrepared(1L, "USD", TEN, valueOf(1_000), LocalDateTime.now(clock));
+    Payment payment = Payment.createPrepared(1L, "USD", TEN, valueOf(1_000),
+        LocalDateTime.now(clock));
     assertThat(payment.isValid(clock));
-    Assertions.assertThat(payment.isValid(Clock.offset(clock, Duration.of(30, ChronoUnit.MINUTES)))).isFalse();
+    assertThat(payment.isValid(Clock.offset(clock, Duration.of(30, ChronoUnit.MINUTES))))
+        .isFalse();
   }
 }

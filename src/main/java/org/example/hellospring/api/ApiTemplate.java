@@ -33,7 +33,8 @@ public class ApiTemplate {
     return getForExRate(url, this.apiExecutor, exRateExtractor);
   }
 
-  public BigDecimal getForExRate(String url, ApiExecutor apiExecutor, ExRateExtractor exRateExtractor) {
+  public BigDecimal getForExRate(String url, ApiExecutor apiExecutor,
+      ExRateExtractor exRateExtractor) {
     URI uri;
     try {
       uri = new URI(url);
