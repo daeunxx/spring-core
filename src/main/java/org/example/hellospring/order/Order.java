@@ -16,6 +16,10 @@ public class Order {
     this.totalAmount = totalAmount;
   }
 
+  public void setOrderId(Long orderId) {
+    OrderId = orderId;
+  }
+
   public Long getOrderId() {
     return OrderId;
   }
