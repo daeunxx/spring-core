@@ -1,13 +1,12 @@
 package core.springbasic.scope;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -44,10 +43,10 @@ public class SingletonWithPrototype {
   @RequiredArgsConstructor
   static class ClientBean {
 
-    private final ObjectProvider<PrototypeBean> provider;
+    private final Provider<PrototypeBean> provider;
 
     public int logic() {
-      PrototypeBean prototypeBean = provider.getObject();
+      PrototypeBean prototypeBean = provider.get();
       prototypeBean.addCount();
       return prototypeBean.getCount();
     }
