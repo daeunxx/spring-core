@@ -3,12 +3,10 @@ package core.springbasic.beanfind;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import core.AppConfig;
 import core.springbasic.discount.DiscountPolicy;
 import core.springbasic.discount.FixDiscountPolicy;
 import core.springbasic.discount.RateDiscountPolicy;
 import java.util.Map;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;

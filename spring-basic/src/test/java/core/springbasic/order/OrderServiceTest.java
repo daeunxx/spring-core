@@ -2,11 +2,10 @@ package core.springbasic.order;
 
 import static org.assertj.core.api.Assertions.*;
 
-import core.AppConfig;
+import core.springbasic.AppConfig;
 import core.springbasic.member.Grade;
 import core.springbasic.member.Member;
 import core.springbasic.member.MemberService;
-import core.springbasic.member.MemberServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

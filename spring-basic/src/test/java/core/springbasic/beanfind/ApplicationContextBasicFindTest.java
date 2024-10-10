@@ -2,7 +2,7 @@ package core.springbasic.beanfind;
 
 import static org.assertj.core.api.Assertions.*;
 
-import core.AppConfig;
+import core.springbasic.AppConfig;
 import core.springbasic.member.MemberService;
 import core.springbasic.member.MemberServiceImpl;
 import org.junit.jupiter.api.DisplayName;

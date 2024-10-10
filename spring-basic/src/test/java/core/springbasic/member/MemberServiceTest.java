@@ -2,8 +2,7 @@ package core.springbasic.member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import core.AppConfig;
-import org.junit.jupiter.api.BeforeAll;
+import core.springbasic.AppConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

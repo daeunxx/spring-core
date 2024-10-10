@@ -1,4 +1,4 @@
-package core;
+package core.springbasic;
 
 import core.springbasic.discount.DiscountPolicy;
 import core.springbasic.discount.RateDiscountPolicy;

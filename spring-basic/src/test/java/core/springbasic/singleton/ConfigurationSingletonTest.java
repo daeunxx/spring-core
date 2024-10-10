@@ -1,7 +1,7 @@
 package core.springbasic.singleton;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import core.AppConfig;
+import core.springbasic.AppConfig;
 import core.springbasic.member.MemberRepository;
 import core.springbasic.member.MemberServiceImpl;
 import core.springbasic.order.OrderServiceImpl;

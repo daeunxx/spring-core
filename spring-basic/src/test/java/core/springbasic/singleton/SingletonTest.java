@@ -2,7 +2,7 @@ package core.springbasic.singleton;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import core.AppConfig;
+import core.springbasic.AppConfig;
 import core.springbasic.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

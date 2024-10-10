@@ -2,11 +2,9 @@ package core.springbasic.beanfind;
 
 import static org.assertj.core.api.Assertions.*;
 
-import core.AppConfig;
 import core.springbasic.member.MemberRepository;
 import core.springbasic.member.MemoryMemberRepository;
 import java.util.Map;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
