@@ -17,14 +17,14 @@ public class NetworkClient {
 
   @PostConstruct
   public void init() {
-    System.out.println("NetworkClient.afterPropertiesSet");
+    System.out.println("NetworkClient.init");
     connect();
     call("초기화 연결 메시지");
   }
 
   @PreDestroy
   public void close() {
-    System.out.println("NetworkClient.destroy");
+    System.out.println("NetworkClient.close");
     disconnect();
   }
 
